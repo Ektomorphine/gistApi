@@ -1,10 +1,23 @@
+<form>
+<p>User name:</p>
+    <input type="text" name="username" [(ngModel)]="user" >
+    <p><button (click)="getUser(user)">Submit</button>
+</form>
+
+<p *ngFor=" let item of dataGist ">
+    {{item.gistName}},{{item.rawUrl}}
+</p>
+
+
+<!-- List of gist's
 <p *ngFor=" let file of files; let i = index ">
- {{file}}: {{i}} <br>
+ {{i+1}}: {{file}}  <br>
     <span *ngFor=" let urls of url; let z = index ">
       <span *ngIf="  i == z ">
-       {{urls}}:{{z}}
+       <a href="{{urls}}">Open gist</a>
       </span>
     </span>
 </p>
+ !-->
 
 
