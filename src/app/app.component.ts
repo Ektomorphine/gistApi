@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   public dataGist: Gist[] = [];
   public user = '';
   public apiUrl = '';
+  public condition: boolean=true;
 
   constructor(private httpService: HttpService) {}
 
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
   public getUser(): void {
     this.apiUrl = 'https://api.github.com/users/'+this.user+'/gists';
     this.func();
+    this.dataGist = [];
   }
 
   public func(): void {
@@ -40,3 +42,6 @@ export class AppComponent implements OnInit {
         });
   }
 }
+
+
+//

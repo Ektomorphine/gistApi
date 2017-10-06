@@ -1,12 +1,15 @@
 <form>
 <p>User name:</p>
     <input type="text" name="username" [(ngModel)]="user" >
-    <p><button (click)="getUser(user)">Submit</button>
+    <p><button (click)="getUser(user)">Submit</button></p>
+
 </form>
 
-<p *ngFor=" let item of dataGist ">
+<span >
+<p *ngFor=" let item of dataGist" >
     {{item.gistName}},{{item.rawUrl}}
 </p>
+</span>
 
 
 <!-- List of gist's
