@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   public user = '';
   public apiUrl = '';
   public condition: boolean=true;
+  public commUrl = '';
+  public commBody: string[] = [] ;
 
   constructor(private httpService: HttpService) {}
 
@@ -23,14 +25,16 @@ export class AppComponent implements OnInit {
 
   public getUser(): void {
     this.apiUrl = 'https://api.github.com/users/'+this.user+'/gists';
-    this.func();
-    this.dataGist = [];
+    this.func();this.dataGist = [];
+
   }
 
   public func(): void {
     this.httpService.getData(this.apiUrl)
         .subscribe(data => {
           data.json().forEach(gist => {
+              this.commUrl = gist.comments_url;
+              this.commentFunc();
              for (let item in gist.files){
                let obj1: Gist = {
                  gistName: gist.files[item].filename,
@@ -39,9 +43,24 @@ export class AppComponent implements OnInit {
                this.dataGist.push(obj1);
              }
           })
+          console.log(this.commUrl);
         });
   }
+
+  public commentFunc(): void {
+    this.httpService.getData(this.commUrl)
+        .subscribe(data => {
+          data.json().forEach(comm => {
+              this.commBody.push(comm.body);
+
+          })
+
+        });
+  }
+
+
+
 }
 
 
-//
+

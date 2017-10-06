@@ -5,11 +5,13 @@
 
 </form>
 
-<span >
-<p *ngFor=" let item of dataGist" >
-    {{item.gistName}},{{item.rawUrl}}
-</p>
-</span>
+
+<div *ngFor=" let item of dataGist" >
+    {{item.gistName}}<br> {{item.rawUrl}} <br>
+    <ul> <li *ngFor="let comm of commBody"> {{comm}}</li></ul>
+</div>
+
+
 
 
 <!-- List of gist's
