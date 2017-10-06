@@ -27,9 +27,9 @@ export class AppComponent implements OnInit {
 
           for (let item in gist.files) {
             //console.log(gist.files[item].raw_url)
-            debugger;
-            this.files.push(item);
-            this.url.push(gist.files[item].raw_url)
+            //debugger;
+            this.files.push(item)
+            this.url.push(gist.files[item].raw_url);
           }
         })
 

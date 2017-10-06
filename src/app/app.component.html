@@ -1,5 +1,10 @@
-<p *ngFor="let file of files">
-
- {{file}}
-  {{url}}
+<p *ngFor=" let file of files; let i = index ">
+ {{file}}: {{i}} <br>
+    <span *ngFor=" let urls of url; let z = index ">
+      <span *ngIf="  i == z ">
+       {{urls}}:{{z}}
+      </span>
+    </span>
 </p>
+
+
