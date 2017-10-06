@@ -11,13 +11,22 @@ import { Gist }              from './models/gist.model';
 })
 export class AppComponent implements OnInit {
 
-  public apiUrl = 'https://api.github.com/users/edwardendovickiy/gists';
   public dataGist: Gist[] = [];
+  public user = '';
+  public apiUrl = '';
 
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.httpService.getData()
+  }
+
+  public getUser(): void {
+    this.apiUrl = 'https://api.github.com/users/'+this.user+'/gists';
+    this.func();
+  }
+
+  public func(): void {
+    this.httpService.getData(this.apiUrl)
         .subscribe(data => {
           data.json().forEach(gist => {
              for (let item in gist.files){

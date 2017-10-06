@@ -9,16 +9,22 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class HttpService{
 
-
+  public user: string;
 
   constructor(private http: Http){ }
 
 
+  // getUser(){
+  //   let apiUrl = user;
+  // }
 
-  getData(){
+  getData(apiUrl){
       return this.http
-                 .get('https://api.github.com/users/edwardendovickiy/gists');
+                 .get(apiUrl);
     }
+
+
+
 }
     
 
