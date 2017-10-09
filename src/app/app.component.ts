@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpService }       from './services/service.component';
-import { Response }          from '@angular/http';
-import { Gist }              from './models/gist.model';
+import { Component, OnInit, ContentChild } from '@angular/core';
+import { HttpService } from './services/service.component';
+import { Response } from '@angular/http';
+import { Gist } from './models/gist.model';
+import { Comm } from './models/comm.model';
+
+
 
 @Component({
   selector: 'app-root',
@@ -17,6 +20,8 @@ export class AppComponent implements OnInit {
   public condition: boolean=true;
   public commUrl = '';
   public commBody: string[] = [] ;
+  public selectedGist : Gist;
+  public selectedComm: Comm;
 
   constructor(private httpService: HttpService) {}
 
@@ -25,8 +30,8 @@ export class AppComponent implements OnInit {
 
   public getUser(): void {
     this.apiUrl = 'https://api.github.com/users/'+this.user+'/gists';
-    this.func();this.dataGist = [];
-
+    this.func();
+    this.dataGist = [];
   }
 
   public func(): void {
@@ -58,7 +63,13 @@ export class AppComponent implements OnInit {
         });
   }
 
+  public onSelect( item: Gist): void {
+    this.selectedGist = item;
+  }
 
+  public onSelectComm(comment: Comm): void {
+    this.selectedComm = comment;
+  }
 
 }
 

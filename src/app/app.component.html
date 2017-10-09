@@ -1,17 +1,31 @@
 
 <form>
-<h1>User name:</h1>
+  <h1>User name:</h1>
     <input type="text" name="username" [(ngModel)]="user" >
-    <p><button class="button_green" (click)="getUser(user)">Submit</button></p>
-
+    <p><button class="button_green" (click)="getUser(user)" >Submit</button></p>
 </form>
 
 
-<div *ngFor=" let item of dataGist" >
-    File name:{{item.gistName}}<br>
-    <p><a href="{{item.rawUrl}}"><button class="button_green">Open file</button></a></p><br>
-    Comments of gist
-    <ul> <li *ngFor="let comm of commBody"> {{comm}}</li></ul>
+<div>
+
+  <ul *ngFor=" let item of dataGist " (click)="onSelect(item)"  >
+    <li>{{i}} File name:{{item.gistName}}</li>
+  </ul>
+
+</div>
+
+<div *ngIf="selectedGist" >
+  <p>
+    <a href="{{selectedGist.rawUrl}}">
+      {{selectedGist.rawUrl}}
+      <button class="button_green">Open file</button>
+    </a>
+  </p>
+  <br>
+    Comments of gist:
+    <ul>
+      <li *ngFor="let comm of commBody" (click)="onSelectComm(comm)"> {{ comm }}</li>
+    </ul>
 </div>
 
 
