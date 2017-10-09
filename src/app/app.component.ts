@@ -16,12 +16,11 @@ export class AppComponent implements OnInit {
 
   public dataGist: Gist[] = [];
   public user = '';
-  public apiUrl = '';
-  public condition: boolean=true;
-  public commUrl = '';
+  public condition: boolean = true;
   public commBody: string[] = [] ;
-  public selectedGist : Gist;
+  public selectedGist: Gist;
   public selectedComm: Comm;
+
 
   constructor(private httpService: HttpService) {}
 
@@ -29,38 +28,40 @@ export class AppComponent implements OnInit {
   }
 
   public getUser(): void {
-    this.apiUrl = 'https://api.github.com/users/'+this.user+'/gists';
-    this.func();
+    const apiUrl = 'https://api.github.com/users/'+this.user+'/gists';
+    this.getList(apiUrl);
     this.dataGist = [];
+
   }
 
-  public func(): void {
-    this.httpService.getData(this.apiUrl)
-        .subscribe(data => {
-          data.json().forEach(gist => {
-              this.commUrl = gist.comments_url;
-              this.commentFunc();
-             for (let item in gist.files){
-               let obj1: Gist = {
-                 gistName: gist.files[item].filename,
-                 rawUrl:gist.files[item].raw_url
-               }
-               this.dataGist.push(obj1);
-             }
-          })
-          console.log(this.commUrl);
-        });
+  public getList(url: string): void {
+    this.dataGist = [];
+    this.httpService
+      .getData(url)
+      .subscribe(data => {
+        data.json().forEach(gist => {
+          for (let item in gist.files) {
+            let obj1 = new Gist(
+             gist.files[item].filename,
+             gist.files[item].raw_url,
+            );
+            this.dataGist.push(obj1);
+            this.getCommentsFor(obj1, gist.comments_url);
+            console.log(obj1);
+          }
+        })
+      });
   }
 
-  public commentFunc(): void {
-    this.httpService.getData(this.commUrl)
-        .subscribe(data => {
-          data.json().forEach(comm => {
-              this.commBody.push(comm.body);
+  public getCommentsFor(gist, url): void {
+    gist.comments = [];
+    this.httpService.getData(url)
+      .subscribe(data => {
+        data.json().forEach(comm => {
+          gist.comments.push(comm.body);
 
-          })
-
-        });
+        })
+      });
   }
 
   public onSelect( item: Gist): void {

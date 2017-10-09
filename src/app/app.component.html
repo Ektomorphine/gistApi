@@ -8,8 +8,8 @@
 
 <div>
 
-  <ul *ngFor=" let item of dataGist " (click)="onSelect(item)"  >
-    <li>{{i}} File name:{{item.gistName}}</li>
+  <ul>
+    <li *ngFor=" let item of dataGist " (click)="onSelect(item)">{{i}} File name:{{item.gistName}}</li>
   </ul>
 
 </div>
@@ -17,15 +17,16 @@
 <div *ngIf="selectedGist" >
   <p>
     <a href="{{selectedGist.rawUrl}}">
-      {{selectedGist.rawUrl}}
       <button class="button_green">Open file</button>
     </a>
   </p>
   <br>
-    Comments of gist:
-    <ul>
-      <li *ngFor="let comm of commBody" (click)="onSelectComm(comm)"> {{ comm }}</li>
-    </ul>
+  <hr>
+  <ul>
+    <li *ngFor=" let comment of selectedGist.comments">{{comment}}</li>
+  </ul>
+  <hr>
+
 </div>
 
 
