@@ -66,11 +66,9 @@ export class AppComponent implements OnInit {
 
   public onSelect( item: Gist): void {
     this.selectedGist = item;
+
   }
 
-  public onSelectComm(comment: Comm): void {
-    this.selectedComm = comment;
-  }
 
 }
 

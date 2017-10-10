@@ -33,11 +33,12 @@ input:-webkit-autofill {
 }
 
 ul {
-  padding-left: 20%
+  padding-left: 5%
 }
 
 li {
   list-style: decimal;
+  text-align: left;
 }
 hr{
   border-color: black;
@@ -83,7 +84,7 @@ hr{
   position: relative;
   width: 85%;
   padding: 10px 0 10px 0;
-  left: 8%;
+  /*left: 8%;*/
 }
 
 .file-name {
@@ -107,9 +108,26 @@ hr{
   position: relative;
   display: inline-block;
   width: 83%;
-  margin-top: 51px;
+  margin-top: 61px;
   left: 14%;
   background-color: #2f3646;
   border-radius: 5px;
   font-family: monospace;
+  text-align: center;
+}
+
+.nOcomments {
+  position: relative;
+  display: inline-block;
+  width: 83%;
+  margin-top: 61px;
+  left: 14%;
+  background-color: #2f3646;
+  border-radius: 5px;
+  font-family: monospace;
+  padding-bottom: 5px;
+}
+
+.text-no-comments {
+  text-align: center;
 }

@@ -16,21 +16,30 @@
 
 
 <div class="column">
-  <div *ngFor=" let item of dataGist " (click)="onSelect(item)" class="file-name">
+  <div *ngFor=" let item of dataGist; let z = index " (click)="onSelect(item)" class="file-name">
     <span >{{item.gistName}}</span>
   </div>
 </div>
-<hr>
+
+
 <div *ngIf="selectedGist" class="comments">
   <p>
     <a href="{{selectedGist.rawUrl}}">
-      <a href="{{selectedGist.rawUrl}}"><button class="button-send button-large">Open code</button></a>
+      <button class="button-send button-large">Open code</button>
     </a>
   </p>
-  <ul style="padding-left: 5%;">
-    <li *ngFor=" let comment of selectedGist.comments">{{comment}}</li>
-  </ul>
+   <div *ngIf="selectedGist.comments!='';else unset">
+    <ul>
+      <li *ngFor=" let comment of selectedGist.comments">{{comment}}</li>
+    </ul>
+  </div>
+  <div *ngIf="selectedGist.comments==''" class="noComments">
+    <span class="text-no-comments">NO COMMENTS IN FILE</span>
+  </div>
 </div>
+
+
+
 
 
 
