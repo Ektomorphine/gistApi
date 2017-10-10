@@ -1,35 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
 
-<form>
-  <h1>User name:</h1>
-    <input type="text" name="username" [(ngModel)]="user" >
-    <p><button class="button_green" (click)="getUser(user)" >Submit</button></p>
-</form>
-
-
-<div>
-
-  <ul>
-    <li *ngFor=" let item of dataGist " (click)="onSelect(item)">{{i}} File name:{{item.gistName}}</li>
-  </ul>
-
+<div class="search-header">
+  <form>
+      <span class="header-text">User name</span>
+      <input type="text" name="username" [(ngModel)]="user" class="form-input">
+      <button (click)="getUser(user)" class="button-send"> Send </button>
+  </form>
 </div>
 
-<div *ngIf="selectedGist" >
+
+
+<div class="column">
+  <div *ngFor=" let item of dataGist " (click)="onSelect(item)" class="file-name">
+    <span >{{item.gistName}}</span>
+  </div>
+</div>
+<hr>
+<div *ngIf="selectedGist" class="comments">
   <p>
     <a href="{{selectedGist.rawUrl}}">
-      <button class="button_green">Open file</button>
+      <a href="{{selectedGist.rawUrl}}"><button class="button-send button-large">Open code</button></a>
     </a>
   </p>
-  <br>
-  <hr>
-  <ul>
+  <ul style="padding-left: 5%;">
     <li *ngFor=" let comment of selectedGist.comments">{{comment}}</li>
   </ul>
-  <hr>
-
 </div>
 
 
+
+</body>
+</html>
 
 
 
