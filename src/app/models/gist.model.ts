@@ -3,14 +3,14 @@ export class Gist {
   rawUrl: string;
   comments?: string[]
 
-  constructor(gistNamez: string,
-              rawUrlz: string,
-              commentsZ?: string[]
+  constructor(setGistName: string,
+              setRawUrl: string,
+              setComments?: string[]
               )
   {
-    this.gistName = gistNamez;
-    this.rawUrl = rawUrlz;
-    this.comments = commentsZ;
+    this.gistName = setGistName;
+    this.rawUrl = setRawUrl;
+    this.comments = setComments;
 
   }
 }

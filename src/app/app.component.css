@@ -131,3 +131,17 @@ hr{
 .text-no-comments {
   text-align: center;
 }
+
+.author-name {
+  font-style: italic;
+  display: block;
+}
+
+.author-a:active, .author-a:visited, .author-a {
+  color: #ff3d6f;
+  text-decoration: none;
+}
+
+.author-a:hover {
+  text-decoration: underline;
+}

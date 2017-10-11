@@ -19,8 +19,6 @@ export class AppComponent implements OnInit {
   public condition: boolean = true;
   public commBody: string[] = [] ;
   public selectedGist: Gist;
-  public selectedComm: Comm;
-
 
   constructor(private httpService: HttpService) {}
 
@@ -28,14 +26,14 @@ export class AppComponent implements OnInit {
   }
 
   public getUser(): void {
+    this.dataGist = [];
     const apiUrl = 'https://api.github.com/users/'+this.user+'/gists';
     this.getList(apiUrl);
-    this.dataGist = [];
-
   }
 
   public getList(url: string): void {
     this.dataGist = [];
+    this.selectedGist = null;
     this.httpService
       .getData(url)
       .subscribe(data => {
@@ -47,6 +45,7 @@ export class AppComponent implements OnInit {
             );
             this.dataGist.push(obj1);
             this.getCommentsFor(obj1, gist.comments_url);
+            this.getCommentsAuthor(obj1, gist.comments_url)
             console.log(obj1);
           }
         })
@@ -55,13 +54,25 @@ export class AppComponent implements OnInit {
 
   public getCommentsFor(gist, url): void {
     gist.comments = [];
+    gist.authorUrl = [];
     this.httpService.getData(url)
       .subscribe(data => {
         data.json().forEach(comm => {
           gist.comments.push(comm.body);
+          gist.authorUrl.push(comm.user.html_url);
 
         })
       });
+  }
+
+  public getCommentsAuthor(gist, url): void {
+    gist.author = [];
+    this.httpService.getData(url)
+      .subscribe(data => {
+        data.json().forEach(author =>{
+          gist.author.push(author.user.login);
+        })
+      })
   }
 
   public onSelect( item: Gist): void {

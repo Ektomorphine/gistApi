@@ -1,49 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title></title>
-</head>
-<body>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <div class="search-header">
+      <form>
+          <span class="header-text">User name</span>
+          <input type="text" name="username" [(ngModel)]="user" class="form-input">
+          <button (click)="getUser(user)" class="button-send"> Send </button>
+      </form>
+    </div>
+    <div class="column">
+      <div *ngFor=" let item of dataGist; let z = index " (click)="onSelect(item)" class="file-name">
+        <span >{{item.gistName}}</span>
+      </div>
+    </div>
 
-<div class="search-header">
-  <form>
-      <span class="header-text">User name</span>
-      <input type="text" name="username" [(ngModel)]="user" class="form-input">
-      <button (click)="getUser(user)" class="button-send"> Send </button>
-  </form>
-</div>
-
-
-
-<div class="column">
-  <div *ngFor=" let item of dataGist; let z = index " (click)="onSelect(item)" class="file-name">
-    <span >{{item.gistName}}</span>
-  </div>
-</div>
-
-
-<div *ngIf="selectedGist" class="comments">
-  <p>
-    <a href="{{selectedGist.rawUrl}}">
-      <button class="button-send button-large">Open code</button>
-    </a>
-  </p>
-   <div *ngIf="selectedGist.comments!='';else unset">
-    <ul>
-      <li *ngFor=" let comment of selectedGist.comments">{{comment}}</li>
-    </ul>
-  </div>
-  <div *ngIf="selectedGist.comments==''" class="noComments">
-    <span class="text-no-comments">NO COMMENTS IN FILE</span>
-  </div>
-</div>
+    <div *ngIf=" selectedGist " class="comments">
+      <p>
+        <a href="{{selectedGist.rawUrl}}">
+          <button class="button-send button-large">Open code</button>
+        </a>
+      </p>
+      <span>Selected File: {{selectedGist.gistName}}</span>
+        <ul>
+          <li *ngFor= "let comment of selectedGist.comments; let z = index">
+              <span class="author-name">
+                <a href="{{selectedGist.authorUrl[z]}}" class="author-a">
+                  {{selectedGist.author[z]}}
+                </a>:
+              </span>
+              "{{comment}}"
+          </li>
+        </ul>
 
 
+      <div *ngIf="selectedGist.comments==''" class="noComments">
+        <span class="text-no-comments">NO COMMENTS IN {{selectedGist.gistName}}</span>
+      </div>
+    </div>
 
-
-
-
-</body>
+  </body>
 </html>
 
 
