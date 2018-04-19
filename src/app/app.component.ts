@@ -2,9 +2,6 @@ import { Component, OnInit, ContentChild } from '@angular/core';
 import { HttpService } from './services/service.component';
 import { Response } from '@angular/http';
 import { Gist } from './models/gist.model';
-import { Comm } from './models/comm.model';
-
-
 
 @Component({
   selector: 'app-root',
@@ -26,8 +23,7 @@ export class AppComponent implements OnInit {
   }
 
   public getUser(): void {
-    this.dataGist = [];
-    const apiUrl = 'https://api.github.com/users/'+this.user+'/gists';
+    const apiUrl = 'https://api.github.com/users/' + this.user + '/gists';
     this.getList(apiUrl);
   }
 
@@ -45,8 +41,7 @@ export class AppComponent implements OnInit {
             );
             this.dataGist.push(obj1);
             this.getCommentsFor(obj1, gist.comments_url);
-            this.getCommentsAuthor(obj1, gist.comments_url)
-            console.log(obj1);
+            this.getCommentsAuthor(obj1, gist.comments_url);
           }
         })
       });
@@ -77,10 +72,7 @@ export class AppComponent implements OnInit {
 
   public onSelect( item: Gist): void {
     this.selectedGist = item;
-
   }
-
-
 }
 
 

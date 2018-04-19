@@ -8,23 +8,13 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class HttpService{
-
   public user: string;
 
   constructor(private http: Http){ }
 
-
-  // getUser(){
-  //   let apiUrl = user;
-  // }
-
   getData(apiUrl){
-      return this.http
-                 .get(apiUrl);
+      return this.http.get(apiUrl);
     }
-
-
-
 }
     
 
