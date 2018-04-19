@@ -1,0 +1,147 @@
+
+body {
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill {
+  border: 0;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.column {
+  position: absolute;
+  top: 61px;
+  display: inline-block;
+  width: 10%;
+  left: 1%;
+}
+
+.search-header {
+  position: fixed;
+  display: inline-block;
+  width: 100%;
+  background: linear-gradient(135deg, #466c75 0%,#4d8e82 47%,#708c86 100%);
+  padding: 20px;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+ul {
+  padding-left: 5%
+}
+
+li {
+  list-style: decimal;
+  text-align: left;
+}
+hr{
+  border-color: black;
+  width: 99%;
+}
+
+.button-send {
+  cursor: default;
+  color: white;
+  background-color: #ff3d6f;
+  border: 0;
+  border-radius: 4px;
+  outline: 0;
+  padding: 3px 20px;
+  transition: 1s;
+}
+
+.button-send:hover {
+  background-color: #c78e9d;
+  cursor: pointer;
+}
+
+.form-input {
+  width: 100px;
+  border: 0;
+  border-radius: 4px;
+  padding: 3px;
+  transition: 0.5s;
+  outline: 0;
+}
+
+.form-input:focus {
+  width: 200px;
+}
+
+.header-text {
+  text-transform: uppercase;
+  font-family: monospace;
+  padding-right:  30px;
+}
+
+.button-large {
+  position: relative;
+  width: 85%;
+  padding: 10px 0 10px 0;
+  /*left: 8%;*/
+}
+
+.file-name {
+  cursor: default;
+  text-align: center;
+  background-color: lightseagreen;
+  padding: 4px;
+  margin: 9px 0;
+  border-radius: 8px;
+  font-family: monospace;
+  transition: 0.1s;
+  width: 100%;
+}
+
+.file-name:hover {
+  cursor: pointer;
+  background-color: seagreen;
+}
+
+.comments {
+  position: relative;
+  display: inline-block;
+  width: 83%;
+  margin-top: 61px;
+  left: 14%;
+  background-color: #2f3646;
+  border-radius: 5px;
+  font-family: monospace;
+  text-align: center;
+}
+
+.nOcomments {
+  position: relative;
+  display: inline-block;
+  width: 83%;
+  margin-top: 61px;
+  left: 14%;
+  background-color: #2f3646;
+  border-radius: 5px;
+  font-family: monospace;
+  padding-bottom: 5px;
+}
+
+.text-no-comments {
+  text-align: center;
+}
+
+.author-name {
+  font-style: italic;
+  display: block;
+}
+
+.author-a:active, .author-a:visited, .author-a {
+  color: #ff3d6f;
+  text-decoration: none;
+}
+
+.author-a:hover {
+  text-decoration: underline;
+}
